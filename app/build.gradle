@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'spa.lyh.cn.jumputil'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "spa.lyh.cn.jumputil"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+    }
+    signingConfigs{
+        release {
+            storeFile file("../key.keystore")//签名文件的path
+            storePassword "qwer1234"
+            keyAlias "jump"
+            keyPassword "qwer1234"
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+}
