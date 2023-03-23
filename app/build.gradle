@@ -16,7 +16,7 @@ android {
     }
     signingConfigs{
         release {
-            storeFile file("../test.keystore")//签名文件的path
+            storeFile file("../key.keystore")//签名文件的path
             storePassword "qwer1234"
             keyAlias "jump"
             keyPassword "qwer1234"
