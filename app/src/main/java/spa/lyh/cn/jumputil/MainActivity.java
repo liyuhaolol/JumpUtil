@@ -13,9 +13,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.window.OnBackInvokedCallback;
 
+import in.xiandan.countdowntimer.CountDownTimerX;
+import in.xiandan.countdowntimer.OnCountDownTimerListener;
+import spa.lyh.cn.jumputil.utils.AnimationUtils;
 import spa.lyh.cn.lib_utils.translucent.BarUtils;
 import spa.lyh.cn.lib_utils.translucent.TranslucentUtils;
 import spa.lyh.cn.lib_utils.translucent.navbar.NavBarFontColorControler;
@@ -23,6 +27,10 @@ import spa.lyh.cn.lib_utils.translucent.statusbar.StatusBarFontColorControler;
 
 public class MainActivity extends AppCompatActivity{
     private LinearLayout gsetting;
+    private TextView error;
+
+    private CountDownTimerX timer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,22 @@ public class MainActivity extends AppCompatActivity{
         });
         TranslucentUtils.setTranslucentBoth(getWindow());
         checkStatusBarColor(getResources().getConfiguration());
+        error = findViewById(R.id.error);
+        timer = new CountDownTimerX(2000,1000);
+        timer.setOnCountDownTimerListener(new OnCountDownTimerListener() {
+            @Override
+            public void onTick(long millisUntilFinished) {
+            }
+
+            @Override
+            public void onFinish() {
+                AnimationUtils.fadeOut(error);
+            }
+
+            @Override
+            public void onCancel() {
+            }
+        });
     }
 
     private void goGoogleSetting(){
@@ -47,7 +71,10 @@ public class MainActivity extends AppCompatActivity{
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }catch (Exception e){
-            Toast.makeText(this,"转跳失败，请检查手机是否存在或启用gms",Toast.LENGTH_SHORT).show();
+            AnimationUtils.fadeIn(error);
+            if (!timer.isStart()){
+                timer.start();
+            }
         }
     }
 

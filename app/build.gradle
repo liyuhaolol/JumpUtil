@@ -10,8 +10,8 @@ android {
         applicationId "spa.lyh.cn.jumputil"
         minSdk 23
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
 
     }
     signingConfigs{
@@ -53,4 +53,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     //通用的工具类
     implementation "com.github.liyuhaolol:CommonUtils:1.3.9"
+    //倒计时工具
+    implementation "com.github.liyuhaolol:CountDownTimerX:1.0.4"
 }
