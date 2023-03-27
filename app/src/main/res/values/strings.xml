@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">谷歌设置启动器</string>
+    <string name="title">谷歌设置启动器</string>
+    <string name="open_gsetting">打开谷歌设置</string>
+    <string name="gsetting_describe">账号设置，备份，自动填充，个人安全，家长控制，广告，查找我的设备，设备和分享，设置及恢复</string>
 </resources>

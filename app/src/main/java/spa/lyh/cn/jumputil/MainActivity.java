@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.window.OnBackInvokedCallback;
 
@@ -20,16 +21,15 @@ import spa.lyh.cn.lib_utils.translucent.TranslucentUtils;
 import spa.lyh.cn.lib_utils.translucent.navbar.NavBarFontColorControler;
 import spa.lyh.cn.lib_utils.translucent.statusbar.StatusBarFontColorControler;
 
-@RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
 public class MainActivity extends AppCompatActivity{
-    private Button btn;
+    private LinearLayout gsetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn = findViewById(R.id.btn);
-        btn.setOnClickListener(new View.OnClickListener() {
+        gsetting = findViewById(R.id.gsetting);
+        gsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goGoogleSetting();
